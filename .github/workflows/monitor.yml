@@ -1,0 +1,28 @@
+name: Surveillance des logements CROUS
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'  # Toutes les 10 minutes
+  workflow_dispatch:
+
+jobs:
+  check-housing:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run the script
+        run: node script-crous.js
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
