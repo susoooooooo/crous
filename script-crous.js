@@ -5,7 +5,7 @@ const TELEGRAM_TOKEN = process.env.TELEGRAM_TOKEN;
 const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 
 async function checkForHousingList() {
-  const url = 'https://trouverunlogement.lescrous.fr/tools/39/accommodations';
+  const url = 'https://trouverunlogement.lescrous.fr/tools/39/search?bounds=2.379914465418907_48.670795309304_2.4758731751357037_48.60023448317922';
 
   try {
     const { data } = await axios.get(url);
